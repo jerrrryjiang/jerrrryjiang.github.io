@@ -17,42 +17,101 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+Hi! I'm Jiarui Jiang(姜嘉瑞), a third-year undergraduate student in Computer Science and Technology (Elite Class) at Tongji University.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+I have been fortunate to conduct research at the [IDVX Lab](https://idvxlab.com/) under the mentorship of [Dr. Yang Shi](https://xiaoyangtao.github.io/) since 2024. Previously, I spent a rewarding semester as an exchange student at [EPFL](https://www.epfl.ch/), where I worked on "learning-by-teaching" agents at the [CHILI Lab](https://www.epfl.ch/labs/chili/), supervised by Dr. Pierre Dillenbourg and Dr. Christopher Petrie.
+
+My research interest is **Human-AI Interaction**, particularly in designing human-like agents and exploring the co-adaptation between humans and AI. Lately, I am actively exploring **how narratives influence LLMagent** believability and mutual trust. I am always open to new collaborations—please feel free to reach out!
+
+In my free time, I enjoy playing badminton, drawing, and listening to music. I am also a member of the Tongji Musical Club and a fan of Lana Del Rey.🦋
 
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2026.03*: &nbsp;🎉🎉 Our paper *"All Futures at Once:"* is officially accepted by **CHI 2026**,thanks so much to Jiayang and !
+- *2026.01*: &nbsp;🎉🎉 Completed the project of an agent system for "Learning-by-Teaching" at **EPFL CHILI Lab**.
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CHI 2026</div><img src='images/paper1.png' alt="paper1" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+All Futures at Once: Supporting Speculative Design for Placemaking with Multi-Agent Social Simulation
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+Jiayang Li, **Jiarui Jiang**, Shuqing Tang, Mutao Yu, Xinyuan Song, Yang Shi*.
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- Exploring the use of multi-agent social simulation to support speculative placemaking design processes. Accepted by **CHI 2026** (second author).
 </div>
 </div>
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+# 🛠 Other Projects
+
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/project1_robotics.jpg' alt="Cable-Driven Parallel Robot" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+**Cable-Driven Parallel Robot Painting System** (绳驱动并联机器人绘画系统)
+
+A cable-driven parallel robot system that manipulates a brush to paint on acrylic panels. **National Innovation and Entrepreneurship Project** (国家级大学生创新创业项目).
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/project2_moon.png' alt="Poems in the Moon" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+**Poems in the Moon** (月中诗)
+
+An interactive visualization system exploring moon imagery in classical Chinese poetry. 🏆 **Third Prize**, National Digital Art & Design Competition (数字艺术设计大赛三等奖).
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><img src='images/project3_nexttown.png' alt="Next Town" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+**Next Town**
+
+A multi-agent-driven community co-creation platform. 🏆 **Third Prize**, UXDA National Competition (UXDA 全国三等奖).
+</div>
+</div>
 
 # 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- National Scholarship (国家奖学金)
+- First-Class Outstanding Student Scholarship, Tongji University (校级优秀学生一等奖学金)
+- Outstanding Student Cadre Award, Tongji University (校级优秀学生干部奖)
+- REGAL LLOYDS Corporate Scholarship (华高莱斯企业奖学金)
 
 # 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2023.09 - 2027.06 (expected)*, B.Eng. in Computer Science and Technology (Elite Class), Tongji University, Shanghai, China.
+- *2025.09 - 2026.02*, Exchange Student in Informatique, École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland.
 
-# 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
+# 🖼 Gallery
 
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+<div class="gallery-grid">
+  <div class="gallery-item">
+    <img src="images/500x300.png" alt="gallery1">
+    <div class="gallery-overlay">
+      <div class="gallery-title">Title 1</div>
+      <div class="gallery-desc">A brief caption.</div>
+    </div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/500x300.png" alt="gallery2">
+    <div class="gallery-overlay">
+      <div class="gallery-title">Title 2</div>
+      <div class="gallery-desc">A brief caption.</div>
+    </div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/500x300.png" alt="gallery3">
+    <div class="gallery-overlay">
+      <div class="gallery-title">Title 3</div>
+      <div class="gallery-desc">A brief caption.</div>
+    </div>
+  </div>
+  <div class="gallery-item">
+    <img src="images/500x300.png" alt="gallery4">
+    <div class="gallery-overlay">
+      <div class="gallery-title">Title 4</div>
+      <div class="gallery-desc">A brief caption.</div>
+    </div>
+  </div>
+</div>
+
