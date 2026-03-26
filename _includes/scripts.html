@@ -2,3 +2,89 @@
 
 {% include analytics.html %}
 {% include fetch_google_scholar_stats.html %}
+
+<script>
+(function() {
+  var canvas = document.getElementById('grass-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var blades = [];
+  var prevX = 0, prevY = 0;
+
+  var greens = [
+    'rgba(144,190,109,',
+    'rgba(169,209,142,',
+    'rgba(200,230,180,',
+    'rgba(120,200,170,',
+    'rgba(180,220,160,'
+  ];
+
+  document.addEventListener('mousemove', function(e) {
+    var vx = e.clientX - prevX;
+    var vy = e.clientY - prevY;
+    var speed = Math.sqrt(vx * vx + vy * vy);
+    prevX = e.clientX;
+    prevY = e.clientY;
+
+    if (speed < 3) return;
+
+    var count = Math.min(Math.floor(speed / 8), 4);
+    for (var i = 0; i < count; i++) {
+      var angle = Math.atan2(vy, vx) + (Math.random() - 0.5) * 1.2;
+      var len = 10 + Math.random() * 16;
+      var col = greens[Math.floor(Math.random() * greens.length)];
+      blades.push({
+        x: e.clientX + (Math.random() - 0.5) * 12,
+        y: e.clientY + (Math.random() - 0.5) * 12,
+        angle: angle,
+        len: len,
+        width: 1.2 + Math.random() * 1.5,
+        life: 1,
+        decay: 0.012 + Math.random() * 0.01,
+        sway: (Math.random() - 0.5) * 0.04,
+        color: col
+      });
+    }
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = blades.length - 1; i >= 0; i--) {
+      var b = blades[i];
+      b.life -= b.decay;
+      b.angle += b.sway;
+
+      if (b.life <= 0) {
+        blades.splice(i, 1);
+        continue;
+      }
+
+      var endX = b.x + Math.cos(b.angle) * b.len;
+      var endY = b.y + Math.sin(b.angle) * b.len;
+      var cpX = b.x + Math.cos(b.angle + 0.3) * b.len * 0.6;
+      var cpY = b.y + Math.sin(b.angle + 0.3) * b.len * 0.6;
+
+      ctx.beginPath();
+      ctx.moveTo(b.x, b.y);
+      ctx.quadraticCurveTo(cpX, cpY, endX, endY);
+      ctx.strokeStyle = b.color + (b.life * 0.6).toFixed(2) + ')';
+      ctx.lineWidth = b.width * b.life;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>

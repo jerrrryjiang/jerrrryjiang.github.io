@@ -27,7 +27,7 @@ In my free time, I enjoy playing badminton, drawing, and listening to music. I a
 
 
 # 🔥 News
-- *2026.03*: &nbsp;🎉🎉 Our paper *"All Futures at Once:"* is officially accepted by **CHI 2026**,thanks so much to Jiayang and !
+- *2026.03*: &nbsp;🎉🎉 Our paper *"All Futures at Once: Supporting Speculative Design for Placemaking with Multi-Agent Social Simulation"* is officially accepted by **CHI 2026**,thanks so much to Jiayang and Dr.Yang Shi!
 - *2026.01*: &nbsp;🎉🎉 Completed the project of an agent system for "Learning-by-Teaching" at **EPFL CHILI Lab**.
 
 # 📝 Publications 
@@ -86,31 +86,31 @@ A multi-agent-driven community co-creation platform. 🏆 **Third Prize**, UXDA 
 
 <div class="gallery-grid">
   <div class="gallery-item">
-    <img src="images/500x300.png" alt="gallery1">
+    <img src="images/gallery1_musical.jpg" alt="Musical Chicago">
     <div class="gallery-overlay">
-      <div class="gallery-title">Title 1</div>
-      <div class="gallery-desc">A brief caption.</div>
+      <div class="gallery-title">Both Reached for the Gun</div>
+      <div class="gallery-desc">Performing as Billy Flynn in the musical <em>Chicago</em> at Tongji Musical Club.</div>
     </div>
   </div>
   <div class="gallery-item">
-    <img src="images/500x300.png" alt="gallery2">
+    <img src="images/gallery2_lvge.jpg" alt="Desert Practice">
     <div class="gallery-overlay">
-      <div class="gallery-title">Title 2</div>
-      <div class="gallery-desc">A brief caption.</div>
+      <div class="gallery-title">Desert Greening Practice</div>
+      <div class="gallery-desc">Sand control practice in the Tengger Desert, Minqin County, Gansu.</div>
     </div>
   </div>
   <div class="gallery-item">
-    <img src="images/500x300.png" alt="gallery3">
+    <img src="images/gallery_3.jpg" alt="Interlaken Flowers">
     <div class="gallery-overlay">
-      <div class="gallery-title">Title 3</div>
-      <div class="gallery-desc">A brief caption.</div>
+      <div class="gallery-title">Alpine Flowers</div>
+      <div class="gallery-desc">Little flowers on the mountains of Interlaken, Switzerland.</div>
     </div>
   </div>
   <div class="gallery-item">
-    <img src="images/500x300.png" alt="gallery4">
+    <img src="images/gallery4_poster.png" alt="Processing Poster">
     <div class="gallery-overlay">
-      <div class="gallery-title">Title 4</div>
-      <div class="gallery-desc">A brief caption.</div>
+      <div class="gallery-title">Dynamic Poster</div>
+      <div class="gallery-desc">A dynamic poster created with Processing.</div>
     </div>
   </div>
 </div>

@@ -56,9 +56,10 @@
         width: 100%;
         order: 2;
         img {
-            max-width: 400px;
+            width: 400px;
+            height: 230px;
             box-shadow: 3px 3px 6px #888;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
     
@@ -109,10 +110,13 @@ h1:before, .anchor:before {
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
+    columns: 2;
+    column-gap: 16px;
     margin-top: 1em;
+
+    @include breakpoint($medium) {
+        columns: 3;
+    }
 }
 
 .gallery-item {
@@ -121,11 +125,12 @@ h1:before, .anchor:before {
     border-radius: 8px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
     cursor: pointer;
+    break-inside: avoid;
+    margin-bottom: 16px;
     
     img {
         width: 100%;
-        height: 220px;
-        object-fit: cover;
+        height: auto;
         display: block;
         transition: transform 0.3s ease;
     }
@@ -162,4 +167,106 @@ h1:before, .anchor:before {
             transform: translateY(0);
         }
     }
+}
+
+// ---- Micro-interaction 1: Ambient breathing glow ----
+
+.ambient-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    will-change: transform;
+}
+
+.ambient-orb--lemon {
+    width: 600px;
+    height: 600px;
+    background: #FFF4BC;
+    opacity: 0.55;
+    top: -10%;
+    left: 10%;
+    animation: orb-drift-a 55s ease-in-out infinite alternate;
+}
+
+.ambient-orb--mint {
+    width: 550px;
+    height: 550px;
+    background: #B2EBF2;
+    opacity: 0.5;
+    top: 20%;
+    right: 5%;
+    animation: orb-drift-b 48s ease-in-out infinite alternate;
+}
+
+.ambient-orb--lemon-2 {
+    width: 450px;
+    height: 450px;
+    background: #FFF4BC;
+    opacity: 0.35;
+    bottom: 5%;
+    right: 20%;
+    animation: orb-drift-c 62s ease-in-out infinite alternate;
+}
+
+.ambient-orb--mint-2 {
+    width: 400px;
+    height: 400px;
+    background: #B2EBF2;
+    opacity: 0.35;
+    bottom: 15%;
+    left: -5%;
+    animation: orb-drift-d 52s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift-a {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(30vw, 15vh) scale(1.1); }
+    50%  { transform: translate(15vw, 40vh) scale(0.9); }
+    75%  { transform: translate(35vw, 25vh) scale(1.15); }
+    100% { transform: translate(10vw, 50vh) scale(1.05); }
+}
+
+@keyframes orb-drift-b {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(-25vw, 20vh) scale(1.15); }
+    50%  { transform: translate(-10vw, 45vh) scale(0.85); }
+    75%  { transform: translate(-30vw, 10vh) scale(1.1); }
+    100% { transform: translate(-15vw, 35vh) scale(0.95); }
+}
+
+@keyframes orb-drift-c {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(-20vw, -25vh) scale(1.2); }
+    66%  { transform: translate(10vw, -15vh) scale(0.9); }
+    100% { transform: translate(-10vw, -35vh) scale(1.1); }
+}
+
+@keyframes orb-drift-d {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(25vw, -10vh) scale(0.85); }
+    66%  { transform: translate(15vw, -30vh) scale(1.15); }
+    100% { transform: translate(30vw, -20vh) scale(1); }
+}
+
+// ---- Micro-interaction 2: Grass trail canvas ----
+
+#grass-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
 }
