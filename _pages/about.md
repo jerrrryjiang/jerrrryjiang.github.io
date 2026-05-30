@@ -19,7 +19,7 @@ redirect_from:
 
 Hi! I'm Jiarui Jiang(姜嘉瑞), a third-year undergraduate student in Computer Science and Technology (Elite Class) at Tongji University.
 
-I have been fortunate to conduct research at the [IDVX Lab](https://idvxlab.com/) under the mentorship of [Dr. Yang Shi](https://xiaoyangtao.github.io/) since 2024. Previously, I spent a rewarding semester as an exchange student at [EPFL](https://www.epfl.ch/), where I worked on "learning-by-teaching" agents at the [CHILI Lab](https://www.epfl.ch/labs/chili/), supervised by Dr. Pierre Dillenbourg and Dr. Christopher Petrie.
+I have been fortunate to conduct research at the [IDVX Lab](https://idvxlab.com/) under the mentorship of [Dr. Yang Shi](https://xiaoyangtao.github.io/) since 2024. Previously, I spent a rewarding semester as an exchange student at [EPFL](https://www.epfl.ch/), where I studied at the [CHILI Lab](https://www.epfl.ch/labs/chili/), supervised by Dr. Pierre Dillenbourg and Dr. Christopher Petrie. I am a research intern at the [AI4SG Lab](https://www.ai4sg.org/), NUS working under the supervision of Prof. Yi-Chieh (EJ) Lee and mentorship from PhD candidate [Tianqi Song](https://hollysong.site/).
 
 My research interest is **Human-AI Interaction**, particularly in designing human-like agents and exploring the co-adaptation between humans and AI. Lately, I am actively exploring **the social influence of multi-agent systems** and **how they may interact with people**. I am always open to new collaborations—please feel free to reach out!
 
