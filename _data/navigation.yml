@@ -20,3 +20,6 @@ main:
 
   - title: "Gallery"
     url: "/#-gallery"
+
+  - title: "Interactive Demo"
+    url: "/interactive-demo/"
