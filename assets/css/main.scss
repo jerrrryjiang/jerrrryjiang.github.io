@@ -295,6 +295,9 @@ h1:before, .anchor:before {
     video {
         width: 100%;
         max-width: 800px;
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
+        background: #000;
         border-radius: 8px;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.12);
         display: block;
