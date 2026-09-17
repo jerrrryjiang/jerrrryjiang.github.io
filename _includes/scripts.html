@@ -8,78 +8,150 @@
   var canvas = document.getElementById('grass-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+
+  var pixelRatio = 1;
 
   function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(window.innerWidth * pixelRatio);
+    canvas.height = Math.round(window.innerHeight * pixelRatio);
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
   }
   resize();
   window.addEventListener('resize', resize);
 
   var blades = [];
-  var prevX = 0, prevY = 0;
+  var previousPoint = null;
+  var carriedDistance = 0;
+  var bladeSpacing = 10;
+  var maxBlades = 160;
 
   var greens = [
-    'rgba(144,190,109,',
-    'rgba(169,209,142,',
-    'rgba(200,230,180,',
-    'rgba(120,200,170,',
-    'rgba(180,220,160,'
+    'rgb(120, 178, 104)',
+    'rgb(144, 190, 109)',
+    'rgb(151, 202, 153)',
+    'rgb(120, 190, 163)',
+    'rgb(177, 211, 150)'
   ];
 
-  document.addEventListener('mousemove', function(e) {
-    var vx = e.clientX - prevX;
-    var vy = e.clientY - prevY;
-    var speed = Math.sqrt(vx * vx + vy * vy);
-    prevX = e.clientX;
-    prevY = e.clientY;
+  function addBlade(x, y, vx, vy, speed) {
+    var normalX = -vy / speed;
+    var normalY = vx / speed;
+    var sideOffset = (Math.random() - 0.5) * 12;
+    var length = 11 + Math.min(speed, 32) * 0.18 + Math.random() * 7;
 
-    if (speed < 3) return;
+    blades.push({
+      x: x + normalX * sideOffset,
+      y: y + normalY * sideOffset,
+      angle: Math.atan2(-vy, -vx) + (Math.random() - 0.5) * 0.42,
+      length: length,
+      width: 0.9 + Math.random() * 0.9,
+      curve: (Math.random() - 0.5) * length * 0.38,
+      fan: (Math.random() < 0.5 ? -1 : 1) * (0.24 + Math.random() * 0.16),
+      life: 1,
+      decay: 0.013 + Math.random() * 0.007,
+      sway: (Math.random() - 0.5) * 0.006,
+      color: greens[Math.floor(Math.random() * greens.length)]
+    });
 
-    var count = Math.min(Math.floor(speed / 8), 4);
-    for (var i = 0; i < count; i++) {
-      var angle = Math.atan2(vy, vx) + (Math.random() - 0.5) * 1.2;
-      var len = 10 + Math.random() * 16;
-      var col = greens[Math.floor(Math.random() * greens.length)];
-      blades.push({
-        x: e.clientX + (Math.random() - 0.5) * 12,
-        y: e.clientY + (Math.random() - 0.5) * 12,
-        angle: angle,
-        len: len,
-        width: 1.2 + Math.random() * 1.5,
-        life: 1,
-        decay: 0.012 + Math.random() * 0.01,
-        sway: (Math.random() - 0.5) * 0.04,
-        color: col
-      });
+    if (blades.length > maxBlades) {
+      blades.splice(0, blades.length - maxBlades);
     }
+  }
+
+  document.addEventListener('pointermove', function(e) {
+    if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+
+    if (!previousPoint) {
+      previousPoint = { x: e.clientX, y: e.clientY };
+      return;
+    }
+
+    var vx = e.clientX - previousPoint.x;
+    var vy = e.clientY - previousPoint.y;
+    var distance = Math.sqrt(vx * vx + vy * vy);
+    if (distance < 0.5) return;
+
+    var availableDistance = carriedDistance + distance;
+    var desiredCount = Math.floor(availableDistance / bladeSpacing);
+    var count = Math.min(desiredCount, 8);
+    var firstDistance = bladeSpacing - carriedDistance;
+
+    for (var i = 0; i < count; i++) {
+      var distanceAlongPath = desiredCount > 8
+        ? distance * (i + 1) / count
+        : firstDistance + i * bladeSpacing;
+      var progress = Math.min(distanceAlongPath / distance, 1);
+      addBlade(
+        previousPoint.x + vx * progress,
+        previousPoint.y + vy * progress,
+        vx,
+        vy,
+        distance
+      );
+    }
+
+    carriedDistance = desiredCount > 8 ? 0 : availableDistance - desiredCount * bladeSpacing;
+    previousPoint = { x: e.clientX, y: e.clientY };
+  });
+
+  document.addEventListener('pointerleave', function() {
+    previousPoint = null;
+    carriedDistance = 0;
   });
 
   function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     for (var i = blades.length - 1; i >= 0; i--) {
       var b = blades[i];
       b.life -= b.decay;
-      b.angle += b.sway;
+      b.angle += b.sway * b.life;
 
       if (b.life <= 0) {
         blades.splice(i, 1);
         continue;
       }
 
-      var endX = b.x + Math.cos(b.angle) * b.len;
-      var endY = b.y + Math.sin(b.angle) * b.len;
-      var cpX = b.x + Math.cos(b.angle + 0.3) * b.len * 0.6;
-      var cpY = b.y + Math.sin(b.angle + 0.3) * b.len * 0.6;
-
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(b.angle);
+      ctx.globalAlpha = Math.pow(b.life, 1.6) * 0.62;
+      ctx.fillStyle = b.color;
       ctx.beginPath();
-      ctx.moveTo(b.x, b.y);
-      ctx.quadraticCurveTo(cpX, cpY, endX, endY);
-      ctx.strokeStyle = b.color + (b.life * 0.6).toFixed(2) + ')';
-      ctx.lineWidth = b.width * b.life;
-      ctx.lineCap = 'round';
-      ctx.stroke();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(
+        b.length * 0.32, b.curve,
+        b.length * 0.72, b.curve * 0.55,
+        b.length, 0
+      );
+      ctx.bezierCurveTo(
+        b.length * 0.68, b.curve * 0.3,
+        b.length * 0.24, b.width,
+        0, 0
+      );
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.rotate(b.fan);
+      ctx.globalAlpha = Math.pow(b.life, 1.6) * 0.38;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(
+        b.length * 0.35, -b.curve * 0.45,
+        b.length * 0.7, 0
+      );
+      ctx.quadraticCurveTo(
+        b.length * 0.32, b.width * 0.65,
+        0, 0
+      );
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
     }
 
     requestAnimationFrame(draw);
