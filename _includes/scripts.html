@@ -50,8 +50,8 @@
       angle: Math.atan2(-vy, -vx) + (Math.random() - 0.5) * 0.42,
       length: length,
       width: 0.85 + Math.random() * 0.85,
-      curve: (Math.random() - 0.5) * length * 0.44,
-      fan: (Math.random() < 0.5 ? -1 : 1) * (0.2 + Math.random() * 0.14),
+      curve: length * (0.08 + Math.random() * 0.08),
+      fan: 0.28 + Math.random() * 0.14,
       life: 1,
       decay: 0.012 + Math.random() * 0.006,
       sway: (Math.random() - 0.5) * 0.005,
@@ -119,18 +119,18 @@
 
       ctx.save();
       ctx.translate(b.x, b.y);
-      ctx.rotate(b.angle);
+      ctx.rotate(b.angle - b.fan * 0.5);
       ctx.globalAlpha = Math.pow(b.life, 1.6) * 0.62;
       ctx.fillStyle = b.color;
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.bezierCurveTo(
-        b.length * 0.32, b.curve,
-        b.length * 0.72, b.curve * 0.55,
+        b.length * 0.32, -b.curve,
+        b.length * 0.72, -b.curve * 0.55,
         b.length, 0
       );
       ctx.bezierCurveTo(
-        b.length * 0.68, b.curve * 0.3,
+        b.length * 0.68, -b.curve * 0.28 + b.width * 0.4,
         b.length * 0.24, b.width,
         0, 0
       );
@@ -142,11 +142,11 @@
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.quadraticCurveTo(
-        b.length * 0.35, -b.curve * 0.45,
+        b.length * 0.35, b.curve * 0.75,
         b.length * 0.7, 0
       );
       ctx.quadraticCurveTo(
-        b.length * 0.32, b.width * 0.65,
+        b.length * 0.32, b.curve * 0.22 + b.width * 0.65,
         0, 0
       );
       ctx.closePath();
